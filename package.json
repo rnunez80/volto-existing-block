@@ -1,0 +1,13 @@
+{
+  "name": "volto-existing-block",
+  "version": "0.1.0",
+  "description": "volto-existing-block: Volto add-on",
+  "main": "src/index.js",
+  "license": "MIT",
+  "keywords": [
+    "volto-addon",
+    "volto",
+    "plone",
+    "react"
+  ]
+}
