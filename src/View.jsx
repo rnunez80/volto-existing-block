@@ -18,7 +18,7 @@ function View({data}) {
   return element ? (
     <div dangerouslySetInnerHTML={{ __html: element.outerHTML }} />
   ) : (
-    <div>Loading...</div>
+    <></>
   );
 }
 
