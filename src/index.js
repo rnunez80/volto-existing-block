@@ -1,7 +1,9 @@
+import React, { lazy, Suspense } from 'react';
 import iconSVG from '@plone/volto/icons/content-existing.svg';
-import View from './View';
-import Edit from './Edit';
 
+// Use React.lazy to load View and Edit components lazily
+const LazyView = lazy(() => import('./View'));
+const LazyEdit = lazy(() => import('./Edit'));
 
 const applyConfig = (config) => {
   config.blocks.blocksConfig.Existing = {
@@ -9,8 +11,16 @@ const applyConfig = (config) => {
     title: 'Existing',
     icon: iconSVG,
     group: 'common',
-    view: View,
-    edit: Edit,
+    view: (props) => (
+      <Suspense fallback={<div>Loading...</div>}>
+        <LazyView {...props} />
+      </Suspense>
+    ),
+    edit: (props) => (
+      <Suspense fallback={<div>Loading...</div>}>
+        <LazyEdit {...props} />
+      </Suspense>
+    ),
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
@@ -19,4 +29,3 @@ const applyConfig = (config) => {
 };
 
 export default applyConfig;
-
