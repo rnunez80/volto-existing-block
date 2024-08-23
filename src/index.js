@@ -1,9 +1,13 @@
-import React, { lazy, Suspense } from 'react';
+import loadable from '@loadable/component';
 import iconSVG from '@plone/volto/icons/content-existing.svg';
 
-// Use React.lazy to load View and Edit components lazily
-const LazyView = lazy(() => import('./View'));
-const LazyEdit = lazy(() => import('./Edit'));
+// Use loadable to dynamically import the components
+const View = loadable(() => import('./View'), {
+  fallback: <div>Loading...</div>,
+});
+const Edit = loadable(() => import('./Edit'), {
+  fallback: <div>Loading...</div>,
+});
 
 const applyConfig = (config) => {
   config.blocks.blocksConfig.Existing = {
@@ -11,20 +15,13 @@ const applyConfig = (config) => {
     title: 'Existing',
     icon: iconSVG,
     group: 'common',
-    view: (props) => (
-      <Suspense fallback={<div>Loading...</div>}>
-        <LazyView {...props} />
-      </Suspense>
-    ),
-    edit: (props) => (
-      <Suspense fallback={<div>Loading...</div>}>
-        <LazyEdit {...props} />
-      </Suspense>
-    ),
+    view: View,
+    edit: Edit,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
   };
+
   return config;
 };
 
