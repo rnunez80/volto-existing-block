@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react';
 
-function View({data}) {
+function View({ data }) {
   const [element, setElement] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,11 +25,13 @@ function View({data}) {
   }, [data]);
 
   if (isLoading) {
-    return <Segment>
-      <Dimmer active inverted>
-        <Loader inverted>Loading</Loader>
-      </Dimmer>
-    </Segment>;  // Or replace with your loading indicator
+    return (
+      <Segment>
+        <Dimmer active inverted>
+          <Loader inverted>Loading</Loader>
+        </Dimmer>
+      </Segment>
+    ); // Or replace with your loading indicator
   }
 
   return element ? (

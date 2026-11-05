@@ -1,5 +1,5 @@
 export const ExistingSchema = (props) => {
-  const {intl} = props;
+  const { intl } = props;
 
   return {
     title: 'Existing Block',

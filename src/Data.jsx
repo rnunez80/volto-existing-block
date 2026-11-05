@@ -20,7 +20,7 @@ const ExistingData = (props) => {
   return (
     <BlockDataForm
       schema={schema}
-      title='Existing Block'
+      title="Existing Block"
       onChangeField={(id, value) => {
         onChangeBlock(block, {
           ...data,
